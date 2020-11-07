@@ -1,0 +1,9 @@
+{
+    "name": "clementdecou/cd-core",
+    "autoload": {
+        "psr-4": {
+            "ClementCore\\": "src"
+        }
+    },
+    "require": {}
+}

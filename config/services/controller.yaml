@@ -1,0 +1,5 @@
+services:
+  ClementCore\Controller\:
+    resource: '../../src/Controller/*'
+    arguments: ['@framework.template_engine']
+    public: true
