@@ -13,4 +13,8 @@ abstract class BaseController {
     public function __construct(TemplateEngine $engine) {
         $this->templateEngine = $engine;
     }
+
+    protected function render($template, $context = []) {
+        $this->templateEngine->render($template, $context);
+    }
 }

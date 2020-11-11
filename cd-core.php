@@ -14,6 +14,8 @@ add_filter('simply_config_directories', function($arrayDirectories) {
 });
 
 // Init acf
-add_action('acf/init', 'ClementCore\Admin\Admin::initAcfAdmin');
+if (is_admin()) {
+    \ClementCore\Admin\Admin::init();
+}
 
 
