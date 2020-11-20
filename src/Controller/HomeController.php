@@ -17,6 +17,12 @@ class HomeController extends BaseController {
 
         // Body data
         $presentation = ThemeSettings::getPresentationData();
-        $this->render('page/home.html.twig', ['headerMenuItems' => $menuItems, 'socialNetworks' => $socialNetworks, 'presentation' => $presentation]);
+        $services = ThemeSettings::getHomeServices();
+        $this->render('page/home.html.twig', [
+            'headerMenuItems' => $menuItems,
+            'socialNetworks' => $socialNetworks,
+            'presentation' => $presentation,
+            'services' => $services
+        ]);
     }
 }

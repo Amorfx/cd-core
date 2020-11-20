@@ -6,6 +6,8 @@ Author: Clément Décou
 Version: 1.0
 */
 
+use ClementCore\Api\OnLiveEndpoint;
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 add_filter('simply_config_directories', function($arrayDirectories) {
@@ -17,5 +19,7 @@ add_filter('simply_config_directories', function($arrayDirectories) {
 if (is_admin()) {
     \ClementCore\Admin\Admin::init();
 }
+
+new OnLiveEndpoint();
 
 
