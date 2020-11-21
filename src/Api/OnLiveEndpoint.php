@@ -12,7 +12,7 @@ class OnLiveEndpoint {
     public function registerEndpoint() {
         register_rest_route( 'theme/v1/', '/settings/switch-live', array(
             // By using this constant we ensure that when the WP_REST_Server changes our readable endpoints will work as intended.
-            'methods'  => \WP_REST_Server::READABLE,
+            'methods'  => \WP_REST_Server::EDITABLE,
             'permission_callback' => [$this, 'canSwitchLive'],
             // Here we register our callback. The callback is fired when this endpoint is matched by the WP_REST_Server class.
             'callback' => [$this, 'switchOnLive'],

@@ -4,6 +4,7 @@ namespace ClementCore\Controller;
 
 use ClementCore\Admin\ThemeMenu;
 use ClementCore\Admin\ThemeSettings;
+use ClementCore\Api\TokenGenerator;
 use Theme2020\Models\Menu\Menu;
 
 class HomeController extends BaseController {
@@ -18,6 +19,7 @@ class HomeController extends BaseController {
         // Body data
         $presentation = ThemeSettings::getPresentationData();
         $services = ThemeSettings::getHomeServices();
+
         $this->render('page/home.html.twig', [
             'headerMenuItems' => $menuItems,
             'socialNetworks' => $socialNetworks,
