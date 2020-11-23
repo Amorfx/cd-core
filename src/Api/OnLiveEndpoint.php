@@ -2,6 +2,7 @@
 
 namespace ClementCore\Api;
 
+use ClementCore\Admin\Ajax\GenerateApiToken;
 use ClementCore\Admin\ThemeSettings;
 
 class OnLiveEndpoint {
@@ -20,12 +21,16 @@ class OnLiveEndpoint {
     }
 
     public function canSwitchLive() {
-        $token = $_GET['token'];
-        return $token === 'toto';
+        $token = $_POST['token'];
+        /** @var TokenGenerator $tokenGenerator */
+        $tokenGenerator = \Simply::get(TokenGenerator::class);
+        $activeToken = get_option(GenerateApiToken::$tokenOptionKey);
+        return wp_check_password($token, $activeToken) && $tokenGenerator->isExpireToken($token) === false;
     }
 
     public function switchOnLive() {
         $onLive = ThemeSettings::isLive();
         update_field('cd_theme-settings_is-live', !$onLive, 'option');
+        echo json_encode(['success' => true, 'onLive' => !$onLive]);
     }
 }
