@@ -2,7 +2,7 @@
 
 namespace ClementCore\Controller;
 
-use SimplyFramework\Template\TemplateEngine;
+use Simply\Core\Template\TemplateEngine;
 
 abstract class BaseController {
     /**
