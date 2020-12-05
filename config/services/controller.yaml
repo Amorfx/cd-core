@@ -3,3 +3,4 @@ services:
     resource: '../../src/Controller/*'
     arguments: ['@framework.template_engine']
     public: true
+    autowire: true

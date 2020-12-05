@@ -6,7 +6,8 @@ Author: Clément Décou
 Version: 1.0
 */
 
-use ClementCore\Api\OnLiveEndpoint;
+use ClementCore\Model\Project;
+use ClementCore\Model\ProjectTag;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -15,11 +16,13 @@ add_filter('simply_config_directories', function($arrayDirectories) {
     return $arrayDirectories;
 });
 
-// Init acf
-if (is_admin()) {
-    \ClementCore\Admin\Admin::init();
-}
+// Add model for project tag
+add_filter('simply_model_term_mapping', function(array $mapping) {
+    $mapping['project_tag'] = ProjectTag::class;
+    return $mapping;
+});
 
-new OnLiveEndpoint();
-
-
+add_filter('simply_model_post_type_mapping', function(array $mapping) {
+    $mapping['project'] = Project::class;
+    return $mapping;
+});

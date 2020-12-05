@@ -1,0 +1,6 @@
+services:
+  ClementCore\Repository\:
+    resource: '../../src/Repository/*'
+
+  ClementCore\Model\:
+    resource: '../../src/Model/*'

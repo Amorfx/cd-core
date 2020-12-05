@@ -1,0 +1,6 @@
+services:
+  ClementCore\Admin\Admin:
+    tags: ['wp.hook']
+
+  ClementCore\Api\OnLiveEndpoint:
+    tags: [ 'wp.hook' ]

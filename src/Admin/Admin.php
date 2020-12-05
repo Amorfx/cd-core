@@ -4,13 +4,21 @@ namespace ClementCore\Admin;
 
 use ClementCore\Admin\Ajax\GenerateApiToken;
 use ClementCore\Admin\Fields\TokenGenerationField;
+use ClementCore\Api\TokenGenerator;
+use Psr\Container\ContainerInterface;
+use Simply\Core\Contract\HookableInterface;
+use Symfony\Contracts\Service\ServiceSubscriberInterface;
+use Symfony\Contracts\Service\ServiceSubscriberTrait;
 
-class Admin {
-    public static function init() {
-        self::initAcfAdmin();
-        GenerateApiToken::init();
-        self::addNavMenus();
+class Admin implements HookableInterface {
+    public function register() {
+        if (is_admin()) {
+            self::initAcfAdmin();
+            GenerateApiToken::init();
+            self::addNavMenus();
+        }
     }
+
     public static function initAcfAdmin() {
         add_action('acf/init', function () {
             acf_add_options_page(array(
