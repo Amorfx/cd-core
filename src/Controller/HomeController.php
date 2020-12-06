@@ -24,14 +24,14 @@ class HomeController extends BaseController {
     public function home() {
         //  Get Menu
         $headerMenu = new Menu(ThemeMenu::$headerNavSlug);
-
+        
         $this->render('page/home.html.twig', [
             'headerMenuItems' => $headerMenu->getItems(),
             'socialNetworks' => ThemeSettings::getRs(),
             'presentation' => ThemeSettings::getPresentationData(),
             'services' => ThemeSettings::getHomeServices(),
             'project_tags' => $this->projectTagRepository->findBy(['hide_empty' => true]),
-            'projects' => $this->projectRepository->findAll()
+            'projects' => $this->projectRepository->findBy([], ['meta_key' => 'cd-project_grid-position', 'order' => 'ASC'])
         ]);
     }
 }
