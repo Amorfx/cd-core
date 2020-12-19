@@ -24,8 +24,21 @@ class Project extends PostTypeObject {
             'img' => $this->getGridImg(),
             'subtitle' => $this->getHomeSubtitle(),
             'gridSize' => $this->getGridSize(),
-            'url' => $this->getGridUrl()
+            'url' => $this->getGridUrl(),
         ];
+    }
+
+    /**
+     * Get term name for Isotope filter in home page
+     * @return array
+     */
+    public function getClassFilterForIsotope() {
+        $tags = $this->getTags();
+        $class = [];
+        foreach ($tags as $aTerm) {
+            $class[] = $aTerm->slug;
+        }
+        return $class;
     }
 
     /**

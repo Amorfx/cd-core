@@ -6,7 +6,7 @@ class ThemeSettings {
     static $isLive;
 
     static function getRs() {
-        return get_field('cd_theme-settings_rs', 'option');;
+        return get_field('cd_theme-settings_rs', 'option');
     }
 
     /**

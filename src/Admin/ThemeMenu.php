@@ -7,11 +7,11 @@ class ThemeMenu {
     static $headerNavSlug = 'header';
 
     static function addNavMenus() {
-        add_action('init', function() {
+        /*add_action('init', function() {
             register_nav_menus([
                 self::$headerNavSlug => 'Header menu'
             ]);
-        });
+        });*/
 
         add_action('wp_update_nav_menu', self::class . '::deleteCache');
     }
