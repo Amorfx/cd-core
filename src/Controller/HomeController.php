@@ -25,11 +25,7 @@ class HomeController extends BaseController {
     }
 
     public function home() {
-        //  Get Menu
-        $headerMenu = new Menu(ThemeMenu::$headerNavSlug);
-        
         $this->render('page/home.html.twig', [
-            'headerMenuItems' => $headerMenu->getItems(),
             'socialNetworks' => ThemeSettings::getRs(),
             'presentation' => ThemeSettings::getPresentationData($this->cache),
             'services' => ThemeSettings::getHomeServices(),
