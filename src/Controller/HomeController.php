@@ -26,7 +26,6 @@ class HomeController extends BaseController {
 
     public function home() {
         $this->render('page/home.html.twig', [
-            'socialNetworks' => ThemeSettings::getRs(),
             'presentation' => ThemeSettings::getPresentationData($this->cache),
             'services' => ThemeSettings::getHomeServices(),
             'project_tags' => $this->projectTagRepository->findBy(['hide_empty' => true]),
