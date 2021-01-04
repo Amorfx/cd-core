@@ -6,6 +6,7 @@ Author: Clément Décou
 Version: 1.0
 */
 
+use ClementCore\Model\Post;
 use ClementCore\Model\Project;
 use ClementCore\Model\ProjectTag;
 
@@ -24,5 +25,6 @@ add_filter('simply_model_term_mapping', function(array $mapping) {
 
 add_filter('simply_model_post_type_mapping', function(array $mapping) {
     $mapping['project'] = Project::class;
+    $mapping['post'] = Post::class;
     return $mapping;
 });

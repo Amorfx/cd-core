@@ -5,6 +5,7 @@ namespace ClementCore\Controller;
 use ClementCore\Admin\ThemeMenu;
 use ClementCore\Admin\ThemeSettings;
 use ClementCore\Api\TokenGenerator;
+use ClementCore\Model\Post;
 use ClementCore\Repository\ProjectRepository;
 use ClementCore\Repository\ProjectTagRepository;
 use Simply\Core\Query\SimplyQuery;
@@ -13,10 +14,6 @@ use Simply\Core\Template\TemplateEngine;
 use Theme2020\Models\Menu\Menu;
 
 class BlogController extends BaseController {
-    public function __construct(TemplateEngine $engine) {
-        parent::__construct($engine);
-    }
-
     /**
      * Function called in infinite load in blog page
      */
@@ -25,7 +22,8 @@ class BlogController extends BaseController {
     }
 
     public function index() {
-        $allPosts = SimplyQuery::getCurrentQuery()->posts;
+        /** @var Post[] $allPosts */
+        $allPosts = SimplyQuery::getCurrentQuery()->getQueriedPosts();
         $this->render('page/blog.html.twig', ['allPosts' => $allPosts]);
     }
 }
