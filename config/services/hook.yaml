@@ -4,3 +4,8 @@ services:
 
   ClementCore\Api\OnLiveEndpoint:
     tags: [ 'wp.hook' ]
+
+  ClementCore\Hook\:
+    resource: '../../src/Hook/*'
+    autowire: true
+    tags: [ 'wp.hook' ]

@@ -17,7 +17,11 @@ class Post extends PostTypeObject {
                 // Show the post's 'Primary' category, if this Yoast feature is available, & one is set
                 $wpseo_primary_term = new \WPSEO_Primary_Term( 'category', $this->getID() );
                 $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
-                $this->category = ModelFactory::create(get_term( $wpseo_primary_term ));
+                if ($wpseo_primary_term) {
+                    $this->category = ModelFactory::create(get_term( $wpseo_primary_term ));
+                } else {
+                    $this->category = $postCategories[0];
+                }
             } else {
                 $this->category = $postCategories[0];
             }
