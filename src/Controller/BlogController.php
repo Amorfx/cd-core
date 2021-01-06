@@ -4,6 +4,7 @@ namespace ClementCore\Controller;
 
 use ClementCore\Admin\ThemeSettings;
 use ClementCore\Model\Post;
+use ClementCore\Utils\Paginator;
 use Simply\Core\Query\SimplyQuery;
 
 class BlogController extends BaseController {
@@ -17,6 +18,7 @@ class BlogController extends BaseController {
     public function index() {
         /** @var Post[] $allPosts */
         $allPosts = SimplyQuery::getCurrentQuery()->getQueriedPosts();
-        $this->render('page/blog.html.twig', ['allPosts' => $allPosts]);
+        $paginator = new Paginator();
+        $this->render('page/blog.html.twig', ['allPosts' => $allPosts, 'pagination' => $paginator->generateOptimizedPagination()]);
     }
 }
