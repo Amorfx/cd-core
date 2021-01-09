@@ -29,6 +29,17 @@ class Post extends PostTypeObject {
         return $this->category;
     }
 
+    public function displayContentClass() {
+        if ($this->hasSidebar()) {
+            return 'has-sidebaer';
+        }
+        return '';
+    }
+
+    public function hasSidebar() {
+        return !get_field('article-hide-sidebar', $this->post);
+    }
+
     public static function getType() {
         return 'post';
     }
