@@ -31,7 +31,7 @@ class Post extends PostTypeObject {
 
     public function displayContentClass() {
         if ($this->hasSidebar()) {
-            return 'has-sidebaer';
+            return 'has-sidebar';
         }
         return '';
     }
