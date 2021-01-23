@@ -8,7 +8,7 @@ class Project extends PostTypeObject {
     private $tags;
     private $gridSize;
 
-    public function getTags() {
+    public function getProjectTags() {
         if (!is_null($this->tags)) {
             return $this->tags;
         }
@@ -33,7 +33,7 @@ class Project extends PostTypeObject {
      * @return array
      */
     public function getClassFilterForIsotope() {
-        $tags = $this->getTags();
+        $tags = $this->getProjectTags();
         $class = [];
         foreach ($tags as $aTerm) {
             $class[] = $aTerm->slug;

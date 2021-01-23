@@ -8,6 +8,6 @@ class SingleController extends BaseController {
 
     public function post() {
         $currentPost = SimplyQuery::getCurrentObject();
-        $this->render('single/post.html.twig', ['currentPost' => $currentPost]);
+        $this->render('single/post.html.twig', ['currentPost' => $currentPost, 'postTags' => $currentPost->getTags()]);
     }
 }
