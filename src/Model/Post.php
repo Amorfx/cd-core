@@ -29,6 +29,10 @@ class Post extends PostTypeObject {
         return $this->category;
     }
 
+    public function getChapo() {
+        return get_field('post_chapo', $this->post);
+    }
+
     public function displayContentClass() {
         if ($this->hasSidebar()) {
             return 'has-sidebar';
