@@ -18,7 +18,8 @@ class BlogController extends BaseController {
     public function index() {
         /** @var Post[] $allPosts */
         $allPosts = SimplyQuery::getCurrentQuery()->getQueriedPosts();
+        $search = get_query_var('s');
         $paginator = new Paginator();
-        $this->render('page/blog.html.twig', ['allPosts' => $allPosts, 'pagination' => $paginator->generateOptimizedPagination()]);
+        $this->render('page/blog.html.twig', ['allPosts' => $allPosts, 'pagination' => $paginator->generateOptimizedPagination(), 'keywords' => $search]);
     }
 }
